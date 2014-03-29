@@ -41,6 +41,10 @@ describe 'include_subsequence matcher' do
     end
   end
 
+  it 'doesn\'t match a subsequence that\'s longer than the array' do
+    expect(array).not_to include_subsequence([1, 2, 3, 4, 5, 6])
+  end
+
   it 'matches multiple subsequences' do
     expect(array).to include_subsequence([1, 2, 3], [2, 3, 4], [4, 5])
   end
