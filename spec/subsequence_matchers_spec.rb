@@ -49,11 +49,19 @@ describe 'include_subsequence matcher' do
     expect(array).to include_subsequence([1, 2, 3], [2, 3, 4], [4, 5])
   end
 
-  it 'doesn\'t match multiple arguments if any are not subsequences' do
-    expect(array).not_to include_subsequence([1, 2, 3], [2, 4, 3], [4, 5])
-  end
-
   it 'doesn\'t match multiple arguments if all are not subsequences' do
     expect(array).not_to include_subsequence([1, 3, 2], [2, 4, 3], [5, 4])
+  end
+
+  it 'checks that every argument is a subsequence when not negated' do
+    expect {
+      expect(array).to include_subsequence([1, 2, 3], [2, 4, 3], [4, 5])
+    }.to raise_error(RSpec::Expectations::ExpectationNotMetError)
+  end
+
+  it 'checks that every argument is not a subsequence when negated' do
+    expect {
+      expect(array).not_to include_subsequence([1, 2, 3], [2, 4, 3], [4, 5])
+    }.to raise_error(RSpec::Expectations::ExpectationNotMetError)
   end
 end

@@ -7,5 +7,11 @@ module SubsequenceMatchers
         subsequence.empty? || array.each_cons(subsequence.length).any?(&subsequence.method(:==))
       }
     end
+
+    match_when_negated do |array|
+      subsequences.none? { |subsequence|
+        subsequence.empty? || array.each_cons(subsequence.length).any?(&subsequence.method(:==))
+      }
+    end
   end
 end
