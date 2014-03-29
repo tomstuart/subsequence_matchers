@@ -52,4 +52,8 @@ describe 'include_subsequence matcher' do
   it 'doesn\'t match multiple arguments if any are not subsequences' do
     expect(array).not_to include_subsequence([1, 2, 3], [2, 4, 3], [4, 5])
   end
+
+  it 'doesn\'t match multiple arguments if all are not subsequences' do
+    expect(array).not_to include_subsequence([1, 3, 2], [2, 4, 3], [5, 4])
+  end
 end
