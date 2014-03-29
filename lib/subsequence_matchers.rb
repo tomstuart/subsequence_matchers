@@ -17,7 +17,7 @@ module SubsequenceMatchers
     end
 
     def subsequence?(collection, subsequence)
-      subsequence.empty? || collection.each_cons(subsequence.length).any?(&subsequence.method(:==))
+      subsequence.empty? || collection.each_cons(subsequence.length).include?(subsequence)
     end
   end
 end
