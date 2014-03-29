@@ -28,4 +28,16 @@ describe 'include_subsequence matcher' do
   it 'matches single-element subsequence' do
     expect(array).to include_subsequence([3])
   end
+
+  it 'matches empty subsequence' do
+    expect(array).to include_subsequence([])
+  end
+
+  context 'even when the array is empty' do
+    let(:array) { [] }
+
+    it 'matches empty subsequence' do
+      expect(array).to include_subsequence([])
+    end
+  end
 end

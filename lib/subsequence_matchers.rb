@@ -3,7 +3,7 @@ module SubsequenceMatchers
 
   matcher :include_subsequence do |subsequence|
     match do |array|
-      array.each_cons(subsequence.length).any?(&subsequence.method(:==))
+      subsequence.empty? || array.each_cons(subsequence.length).any?(&subsequence.method(:==))
     end
   end
 end
